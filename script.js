@@ -40,3 +40,43 @@ let fusca = Object.create(carroProto, {
 });
 
 console.log(fusca);
+
+
+//Dados primitivos
+let nome1 = 'Kayo';
+let nome2 = nome1;
+nome1 = 'Forest';
+
+console.log(nome1, nome2);
+
+let obj1 = {
+    nome: 'Kayo'
+};
+let obj2 = obj1;
+obj2.nome = 'Forest';
+
+console.log(obj1, obj2);
+
+
+//Função de primeira classe
+let arrAnoCarros = [1965, 1992,1997, 1975, 1981];
+
+//Função Callback
+function calcularTempoCarro(anoCarro) {
+    let data = new Date();
+    return data.getFullYear() - anoCarro;
+}
+
+function anoDosCarros(arr, fun) {
+    let arrTempoCarros = [];
+    for (let i = 0; i < arr.length; i++) {
+        arrTempoCarros.push(fun(arr[i]));
+}
+return arrTempoCarros
+}
+
+//Passando no segundo parâmetro uma função
+let arrCarros = anoDosCarros(arrAnoCarros, calcularTempoCarro);
+
+console.log(arrCarros);
+
