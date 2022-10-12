@@ -80,3 +80,57 @@ let arrCarros = anoDosCarros(arrAnoCarros, calcularTempoCarro);
 
 console.log(arrCarros);
 
+
+//IIFE
+(function() {
+    let pontuacao = Math.random() * 20;
+    if (pontuacao >= 10) {
+        console.log('Jogador ganhou!');
+    } else {
+        console.log('Jogador perdeu!');
+    }
+})();
+
+//Closure
+function tempoIsencaoIPVA(anoAtual) {
+    let mensagem = "Carro não possui isenção de IPVA";
+    let mensagemIsencao = "Calculo dentro da faixa de isenção de IPVA";
+
+    return function(anoCarro) {
+        let idadeCarro = anoAtual - anoCarro;
+        if(idadeCarro > 30) {
+            console.log(mensagemIsencao);
+        } else {
+            console.log(mensagem);
+        }
+    };
+}
+
+let verificadorIPVA = tempoIsencaoIPVA(2018);
+
+verificadorIPVA(1978);
+verificadorIPVA(1991);
+
+
+//Módulo
+let moduloCarro = (function(){
+    //Variável privada
+    let velocidade = 0;
+
+    //Função privada
+    let girarEngrenagens = function() {
+        velocidade += 5;
+};
+
+//Função privada
+let aumentarVelocidade = function () {
+    girarEngrenagens();
+};
+
+//Retorno interface de ação
+return {
+    acelerar: aumentarVelocidade
+};
+})();
+
+moduloCarro.acelerar();
