@@ -7,7 +7,7 @@ function Carro(nome, cor, marca, ano) {
 
 Carro.prototype.velocidade = 0;
 Carro.prototype.acelerar = function() {
-    this.velocidade += 5;
+    this.velocidade += 10;
 };
 Carro.prototype.parar = function() {
     this.velocidade = 0;
